@@ -1,5 +1,4 @@
 import UIKit
-import XCPlayground
 
 
 final class CallbackButton: UIView {
