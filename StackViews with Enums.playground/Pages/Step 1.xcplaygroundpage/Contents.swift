@@ -16,8 +16,8 @@ extension ContentElement {
             label.text = text
             return label
         case .button(let title):
-            let button = UIButton(type: .System)
-            button.setTitle(title, forState: .Normal)
+            let button = UIButton(type: .system)
+            button.setTitle(title, for: .normal)
             return button
         case .image(let image):
             return UIImageView(image: image)
@@ -29,18 +29,18 @@ extension ContentElement {
 final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .whiteColor()
+        view.backgroundColor = .white
         
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .Vertical
+        stack.axis = .vertical
         stack.spacing = 10
         view.addSubview(stack)
         
-        stack.constrainEqual(.Width, to: view)
+        stack.constrainEqual(attribute: .width, to: view)
         stack.center(in: view)
         
-        let image = ContentElement.image([#Image(imageLiteral: "objc-logo-white.png")#]).view
+        let image = ContentElement.image(#imageLiteral(resourceName: "objc-logo-white.png")).view
         stack.addArrangedSubview(image)
         
         let text1 = ContentElement.label("To use the Swift Talk app please login as a subscriber").view
@@ -59,5 +59,4 @@ let vc = ViewController()
 
 vc.view.frame = CGRect(x: 0, y: 0, width: 320, height: 480)
 vc.view
-
 
