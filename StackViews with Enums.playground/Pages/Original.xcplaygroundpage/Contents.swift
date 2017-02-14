@@ -4,18 +4,18 @@ import UIKit
 final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .whiteColor()
+        view.backgroundColor = .white
         
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .Vertical
+        stack.axis = .vertical
         stack.spacing = 10
         view.addSubview(stack)
         
-        stack.constrainEqual(.Width, to: view)
+        stack.constrainEqual(attribute: .width, to: view)
         stack.center(in: view)
         
-        let image = UIImageView(image: [#Image(imageLiteral: "objc-logo-white.png")#])
+        let image = UIImageView(image: #imageLiteral(resourceName: "objc-logo-white.png"))
         stack.addArrangedSubview(image)
         
         let text1 = UILabel()
@@ -23,8 +23,8 @@ final class ViewController: UIViewController {
         text1.text = "To use the Swift Talk app please login as a subscriber"
         stack.addArrangedSubview(text1)
         
-        let button = UIButton(type: .System)
-        button.setTitle("Login with GitHub", forState: .Normal)
+        let button = UIButton(type: .system)
+        button.setTitle("Login with GitHub", for: .normal)
         stack.addArrangedSubview(button)
         
         let text2 = UILabel()
@@ -39,5 +39,3 @@ let vc = ViewController()
 
 vc.view.frame = CGRect(x: 0, y: 0, width: 320, height: 480)
 vc.view
-
-

@@ -5,15 +5,15 @@ final class CallbackButton: UIView {
     let onTap: () -> ()
     let button: UIButton
     
-    init(title: String, onTap: () -> ()) {
+    init(title: String, onTap: @escaping () -> ()) {
         self.onTap = onTap
-        self.button = UIButton(type: .System)
+        self.button = UIButton(type: .system)
         super.init(frame: .zero)
         addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.constrainEdges(to: self)
-        button.setTitle(title, forState: .Normal)
-        button.addTarget(self, action: #selector(tapped), forControlEvents: .TouchUpInside)
+        button.setTitle(title, for: .normal)
+        button.addTarget(self, action: #selector(tapped), for: .touchUpInside)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -53,9 +53,9 @@ extension UIStackView {
     convenience init(elements: [ContentElement]) {
         self.init()
         translatesAutoresizingMaskIntoConstraints = false
-        axis = .Vertical
+        axis = .vertical
         spacing = 10
-
+        
         for element in elements {
             addArrangedSubview(element.view)
         }
@@ -74,21 +74,21 @@ final class StackViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .whiteColor()
+        view.backgroundColor = .white
         
         let stack = UIStackView(elements: elements)
         view.addSubview(stack)
-        stack.constrainEqual(.Width, to: view)
+        stack.constrainEqual(attribute: .width, to: view)
         stack.center(in: view)
     }
 }
 
 
 let elements: [ContentElement] = [
-    .image([#Image(imageLiteral: "objc-logo-white.png")#]),
+    .image(#imageLiteral(resourceName: "objc-logo-white.png")),
     .label("To use the Swift Talk app please login as a subscriber"),
     .button("Login with GitHub", {
         print("Button tapped")

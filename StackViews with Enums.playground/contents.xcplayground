@@ -1,10 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='ios'>
-    <pages>
-        <page name='Final Code'/>
-        <page name='Step 3'/>
-        <page name='Step 2'/>
-        <page name='Step 1'/>
-        <page name='Original'/>
-    </pages>
-</playground>
+<playground version='6.0' target-platform='ios'/>
