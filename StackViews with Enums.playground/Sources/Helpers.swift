@@ -2,33 +2,33 @@ import UIKit
 
 extension UIView {
     public func constrainEqual(attribute: NSLayoutAttribute, to: AnyObject, multiplier: CGFloat = 1, constant: CGFloat = 0) {
-        constrainEqual(attribute, to: to, attribute, multiplier: multiplier, constant: constant)
+        constrainEqual(attribute: attribute, to: to, attribute, multiplier: multiplier, constant: constant)
     }
     
     public func constrainEqual(attribute: NSLayoutAttribute, to: AnyObject, _ toAttribute: NSLayoutAttribute, multiplier: CGFloat = 1, constant: CGFloat = 0) {
-        NSLayoutConstraint.activateConstraints([
-            NSLayoutConstraint(item: self, attribute: attribute, relatedBy: .Equal, toItem: to, attribute: toAttribute, multiplier: multiplier, constant: constant)
-        ])
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint(item: self, attribute: attribute, relatedBy: .equal, toItem: to, attribute: toAttribute, multiplier: multiplier, constant: constant)
+            ])
     }
     
     public func constrainEdges(to view: UIView) {
-        constrainEqual(.Top, to: view, .Top)
-        constrainEqual(.Leading, to: view, .Leading)
-        constrainEqual(.Trailing, to: view, .Trailing)
-        constrainEqual(.Bottom, to: view, .Bottom)
+        constrainEqual(attribute: .top, to: view, .top)
+        constrainEqual(attribute: .leading, to: view, .leading)
+        constrainEqual(attribute: .trailing, to: view, .trailing)
+        constrainEqual(attribute: .bottom, to: view, .bottom)
     }
-
+    
     /// If the `view` is nil, we take the superview.
     public func center(in view: UIView? = nil) {
         guard let container = view ?? self.superview else { fatalError() }
-        centerXAnchor.constrainEqual(container.centerXAnchor)
-        centerYAnchor.constrainEqual(container.centerYAnchor)
+        centerXAnchor.constrainEqual(anchor: container.centerXAnchor)
+        centerYAnchor.constrainEqual(anchor: container.centerYAnchor)
     }
 }
 
 extension NSLayoutAnchor {
-    public func constrainEqual(anchor: NSLayoutAnchor, constant: CGFloat = 0) {
-        let constraint = constraintEqualToAnchor(anchor, constant: constant)
-        constraint.active = true
+    @objc public func constrainEqual(anchor: NSLayoutAnchor, constant: CGFloat = 0) {
+        constraint(equalTo: anchor, constant: constant).isActive = true
     }
 }
+
